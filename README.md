@@ -1,5 +1,3 @@
-vbnet
-Copy code
 # GPT-3 Command Prompt (GPTCP)
 
 GPTCP is a Python-based command-line tool that integrates with the OpenAI GPT-3 language model to assist users in executing tasks and obtaining intelligent responses. It interacts with GPT-3 through a chat interface, translates messages to command-line syntax, and safely executes approved commands.
