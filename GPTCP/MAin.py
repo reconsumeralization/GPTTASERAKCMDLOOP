@@ -1,10 +1,10 @@
-from src.classes.language import Language
 from src.classes.communication_platform import CommunicationPlatform
+from src.classes.language import Language
 from src.utils.ai_interaction import interact_with_chat_website, initialize_driver
 from src.utils.approval import get_command_approval
-from src.utils.error_handling import request_alternative_command, execute_command
-from src.utils.utils import is_command_safe, stopping_condition, split_commands
-from src.settings import LOGGING_CONFIG
+from src.utils.error_handling import request_alternative_command, is_command_safe
+from src.utils.utils import execute_actions, stopping_condition
+from src.config.settings import LOGGING_CONFIG
 import logging
 
 logging.basicConfig(**LOGGING_CONFIG)
