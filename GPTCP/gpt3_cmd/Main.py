@@ -7,13 +7,14 @@ from src.utils.utils import execute_actions, stopping_condition
 from src.config.settings import LOGGING_CONFIG
 import logging
 
-logging.basicConfig(**LOGGING_CONFIG)
-
+# Initialize the languages and communication platform
 python = Language("Python", {"print": ["echo", "echo."]})
 bash = Language("Bash", {"echo.": ["\n"]})
-
 communication_platform = CommunicationPlatform([python, bash])
 
+logging.basicConfig(**LOGGING_CONFIG)
+
+# Set up the web driver and open the chat website
 driver = initialize_driver()
 
 def main() -> None:
@@ -32,13 +33,13 @@ def main() -> None:
         command = communication_platform.translate_message(input_message, python, bash)
 
         # Execute command on the command prompt and capture output
-        output, command_approval_required = execute_command(driver, command)
+        output, command_approval_required = execute_actions(driver, command)
 
         # Send output back to GPT-3 for processing
         output_message = interact_with_chat_website(driver, output)
 
         # Execute computer actions based on generated output message
-        result, success = execute_command(driver, output_message, command_approval_required)
+        result, success = execute_actions(driver, output_message, command_approval_required)
 
         # Log any errors or warnings
         if not success:
